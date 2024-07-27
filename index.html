@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Real-time Name Update</title>
+    <title>Real-time Code Update</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -21,41 +21,46 @@
         .input-section {
             margin-bottom: 20px;
         }
-        .name-display {
-            font-size: 24px;
+        .code-display {
+            font-size: 16px;
             color: #333;
+            background-color: #e0e0e0;
+            padding: 10px;
+            border-radius: 5px;
+            width: 80%;
+            white-space: pre-wrap;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="input-section">
-            <label for="nameInput">Enter your name:</label>
-            <input type="text" id="nameInput" placeholder="Your name here...">
+            <label for="codeInput">Enter your code:</label>
+            <textarea id="codeInput" rows="10" cols="50" placeholder="Type your code here..."></textarea>
         </div>
-        <div class="name-display">
-            Hello, <span id="nameOutput">[Your Name]</span>!
+        <div class="code-display">
+            <pre id="codeOutput"></pre>
         </div>
     </div>
 
     <script>
-        const nameInput = document.getElementById('nameInput');
-        const nameOutput = document.getElementById('nameOutput');
+        const codeInput = document.getElementById('codeInput');
+        const codeOutput = document.getElementById('codeOutput');
 
-        // Load saved name from localStorage on page load
+        // Load saved code from localStorage on page load
         window.onload = function() {
-            const savedName = localStorage.getItem('name');
-            if (savedName) {
-                nameOutput.textContent = savedName;
-                nameInput.value = savedName;
+            const savedCode = localStorage.getItem('code');
+            if (savedCode) {
+                codeOutput.textContent = savedCode;
+                codeInput.value = savedCode;
             }
         };
 
-        // Save name to localStorage and update display in real-time
-        nameInput.addEventListener('input', () => {
-            const name = nameInput.value;
-            nameOutput.textContent = name || '[Your Name]';
-            localStorage.setItem('name', name);
+        // Save code to localStorage and update display in real-time
+        codeInput.addEventListener('input', () => {
+            const code = codeInput.value;
+            codeOutput.textContent = code;
+            localStorage.setItem('code', code);
         });
     </script>
 </body>
