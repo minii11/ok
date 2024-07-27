@@ -3,65 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Real-time Code Update</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f0f0f0;
-        }
-        .container {
-            text-align: center;
-        }
-        .input-section {
-            margin-bottom: 20px;
-        }
-        .code-display {
-            font-size: 16px;
-            color: #333;
-            background-color: #e0e0e0;
-            padding: 10px;
-            border-radius: 5px;
-            width: 80%;
-            white-space: pre-wrap;
-        }
-    </style>
+    <title>User Name Form</title>
 </head>
 <body>
-    <div class="container">
-        <div class="input-section">
-            <label for="codeInput">Enter your code:</label>
-            <textarea id="codeInput" rows="10" cols="50" placeholder="Type your code here..."></textarea>
-        </div>
-        <div class="code-display">
-            <pre id="codeOutput"></pre>
-        </div>
-    </div>
-
-    <script>
-        const codeInput = document.getElementById('codeInput');
-        const codeOutput = document.getElementById('codeOutput');
-
-        // Load saved code from localStorage on page load
-        window.onload = function() {
-            const savedCode = localStorage.getItem('code');
-            if (savedCode) {
-                codeOutput.textContent = savedCode;
-                codeInput.value = savedCode;
-            }
-        };
-
-        // Save code to localStorage and update display in real-time
-        codeInput.addEventListener('input', () => {
-            const code = codeInput.value;
-            codeOutput.textContent = code;
-            localStorage.setItem('code', code);
-        });
-    </script>
+    <form id="nameForm">
+        <label for="nameField">Enter your name:</label>
+        <input type="text" id="nameField" maxlength="25">
+        <button type="button" onclick="getUserName()">Submit</button>
+    </form>
+    <p id="result"></p>
 </body>
 </html>
