@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-time Name Update</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            text-align: center;
+        }
+        .input-section {
+            margin-bottom: 20px;
+        }
+        .name-display {
+            font-size: 24px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="input-section">
+            <label for="nameInput">Enter your name:</label>
+            <input type="text" id="nameInput" placeholder="Your name here...">
+        </div>
+        <div class="name-display">
+            Hello, <span id="nameOutput">[Your Name]</span>!
+        </div>
+    </div>
+
+    <script>
+        const nameInput = document.getElementById('nameInput');
+        const nameOutput = document.getElementById('nameOutput');
+
+        // Function to update the name display and save to localStorage
+        function updateName() {
+            const name = nameInput.value;
+            nameOutput.textContent = name || '[Your Name]';
+            localStorage.setItem('userName', name);
+        }
+
+        // Load the saved name from localStorage on page load
+        window.onload = function() {
+            const savedName = localStorage.getItem('userName');
+            if (savedName) {
+                nameOutput.textContent = savedName;
+                nameInput.value = savedName;
+            }
+        };
+
+        // Update the name display and save to localStorage in real-time
+        nameInput.addEventListener('input', updateName);
+    </script>
+</body>
+</html>
+
