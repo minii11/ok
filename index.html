@@ -6,12 +6,20 @@
     <title>User Name Form</title>
 </head>
 <body>
-    <form id="nameForm">
-        <label for="nameField">Enter your name:</label>
-        <input type="text" id="nameField" maxlength="25">
-        <button type="button" onclick="getUserName()">Submit</button>
+    <h1>What's your name?</h1>
+    <form method="POST">
+        <input type="text" id="tt" placeholder="Enter Name">
+        <input type="checkbox" checked>
+        <button onclick="submitForm()">Submit now</button>
     </form>
-    <p id="result"></p>
+    <p id="demo"></p>
+
+    <script>
+        function submitForm() {
+            var userName = document.getElementById("tt").value;
+            document.getElementById("demo").innerHTML = "Hello, " + userName + "!";
+            // You can save 'userName' to your server or perform any other action here.
+        }
+    </script>
 </body>
 </html>
-
